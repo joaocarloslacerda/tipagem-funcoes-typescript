@@ -43,36 +43,48 @@ function addName(listNames:Array<string>, newName:string):Array<string>{
     return [...listNames, newName]
 }
 
-// console.log("----------------Sessão any---------------");
-// let anyAmount: any;
-// anyAmount = 50;
-// console.log("Variável com número:", anyAmount);
-// anyAmount = "minha idade"
-// console.log("Variável com string:", anyAmount)
+console.log("----------------Sessão any---------------");
+let anyAmount: any;
+anyAmount = 50;
+console.log("Variável com número:");
+console.log(checkValueAny(anyAmount))
 
-// console.log("----------------Sessão Objeto, undefined e null---------------")
-// interface Iperson {
-//     firstName: string,
-//     surname: string,
-//     yearsOld: number,
-//     address?: string | undefined,
-//     phone?: string | null
-// }
-// const personOne: Iperson = {
-//     firstName: "john",
-//     surname: "john",
-//     yearsOld: 30,
-//     address: "Rua São João"
-// }
-// const personTwo: Iperson = {
-//     firstName: "joão",
-//     surname: "lacerda",
-//     yearsOld: 26,
-//     phone: "(51) 99834-2332"
-// }
+anyAmount = "minha idade é 26"
+console.log("Variável com string:")
+console.log(checkValueAny(anyAmount))
 
-// console.log(`Primeiro nome: ${personOne.firstName} \nSobrenome: ${personOne.surname} \nIdade: ${personOne.yearsOld} \nEndereço: ${personOne.address}`)
-// console.log(`Primeiro nome: ${personTwo.firstName} \nSobrenome: ${personTwo.surname} \nIdade: ${personTwo.yearsOld} \nTelefone: ${personTwo.phone}`)
+function checkValueAny(anyAmount: any): any{
+    return `Valor na variável: ${anyAmount}`
+}
+
+console.log("----------------Sessão Objeto, undefined e null---------------")
+interface Iperson {
+    firstName: string,
+    surname: string,
+    yearsOld: number,
+    address?: string | undefined,
+    phone?: string | null
+}
+const personOne: Iperson = {
+    firstName: "john",
+    surname: "cena",
+    yearsOld: 30,
+    address: "Rua São João"
+}
+const personTwo: Iperson = {
+    firstName: "joão",
+    surname: "lacerda",
+    yearsOld: 26,
+    phone: "(51) 99834-2332"
+}
+
+console.log(returnObject(personOne))
+
+function returnObject(personOne:Iperson): Iperson{
+
+    personOne.phone = "(51) 96798-1234"
+    return personOne
+}
 
 // console.log("----------------Sessão Enum---------------");
 
