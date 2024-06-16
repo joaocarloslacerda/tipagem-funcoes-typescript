@@ -108,15 +108,39 @@ function lookForValue(arrayNumbers:Array<number>, valueSought:number): number | 
     return returned !== undefined ? returned : null
 }
 
-// console.log("----------------Sessão Enum---------------");
+console.log("----------------Sessão Enum---------------");
 
-// enum Status {
-//     Active = "ACTIVE",
-//     Inactive = "INACTIVE",
-//     Pending = "PENDING"
-// }
+enum Status {
+    Active = "ACTIVE",
+    Inactive = "INACTIVE",
+    Pending = "PENDING"
+}
 
-// let currentStatus: Status = Status.Active;
-// console.log("Status atual:", currentStatus);
-// currentStatus = Status.Pending;
-// console.log("Status atual:", currentStatus);
+interface User {
+    firstName: string,
+    surname: string,
+    status: Status;
+}
+
+const users: User[] = [
+    {
+        firstName: "john",
+        surname: "cena",
+        status: Status.Active
+    },
+    {
+        firstName: "zezinho",
+        surname: "silva",
+        status: Status.Inactive
+    }
+];
+
+let userSearched:string = "zezinho";
+console.log("Status do usuário buscado:", returnEnum(users, userSearched));
+
+function returnEnum(users: User[], userSearched:string): Status | undefined{
+    
+    const userFound: User | undefined = users.find(user => user.firstName == userSearched);
+
+    return userFound?.status
+}
