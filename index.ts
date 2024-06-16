@@ -57,7 +57,7 @@ function checkValueAny(anyAmount: any): any{
     return `Valor na variável: ${anyAmount}`
 }
 
-console.log("----------------Sessão Objeto, undefined e null---------------")
+console.log("----------------Sessão Objeto---------------")
 interface Iperson {
     firstName: string,
     surname: string,
@@ -71,12 +71,6 @@ const personOne: Iperson = {
     yearsOld: 30,
     address: "Rua São João"
 }
-const personTwo: Iperson = {
-    firstName: "joão",
-    surname: "lacerda",
-    yearsOld: 26,
-    phone: "(51) 99834-2332"
-}
 
 console.log(returnObject(personOne))
 
@@ -84,6 +78,34 @@ function returnObject(personOne:Iperson): Iperson{
 
     personOne.phone = "(51) 96798-1234"
     return personOne
+}
+
+console.log("----------------Sessão undefined---------------")
+console.log("Retorno:", returnUndefined(personOne))
+
+function returnUndefined(personOne:Iperson): undefined{ //poderia ter o retorno como void também, mas não seria um retorno undefined explícito
+    if(personOne.address){
+        return undefined;
+    }
+}
+
+console.log("----------------Sessão null---------------")
+const arrayNumbers: Array<number> = [4, 7, 3, 9, 1];
+let valueSought: number = 9;
+
+let valueReturned: number | null = lookForValue(arrayNumbers, valueSought);
+
+if(valueReturned != null){
+    console.log(`Valor ${valueReturned} encontrado`)
+} else {
+    console.log(`Valor buscado não encontrado`);
+}
+
+function lookForValue(arrayNumbers:Array<number>, valueSought:number): number | null{
+     
+    const returned = arrayNumbers.find(number => number === valueSought)
+    
+    return returned !== undefined ? returned : null
 }
 
 // console.log("----------------Sessão Enum---------------");
